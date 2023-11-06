@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +6,8 @@
 </head>
 <body>
   <canvas id="myCanvas"></canvas>
+  <a id="downloadLink" href="#" download="myImage.png">画像をダウンロード</a>
+
   <script>
     // キャンバスの作成
     const canvas = document.getElementById('myCanvas');
@@ -35,12 +38,12 @@
     }
 
     // 画像データの取得
-    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    const imageData = canvas.toDataURL();
 
-    // 画像データを表示
-    const image = new Image();
-    image.src = canvas.toDataURL();
-    document.body.appendChild(image);
+    // ダウンロードリンクの設定
+    const downloadLink = document.getElementById('downloadLink');
+    downloadLink.href = imageData;
+
   </script>
 </body>
 </html>
